@@ -26,8 +26,8 @@
 - Ansible (установлен внутри WSL).
 
 ## Инструкция по запуску
-1.  Поднять виртуальную машину: `vagrant up` ( из папки demovm), она в  домашнем каталоге как и drupal-galaxy
-2.  Перейти в папку проекта: `cd drupal-galaxy`
+1.  Поднять виртуальную машину: `vagrant up` ( из папки demovm), она в  домашнем каталоге как и drupal_galaxy
+2.  Перейти в папку проекта: `cd drupal_galaxy`
 3.  Установить необходимые роли из Ansible Galaxy:
    `ansible-galaxy install -r requirements.yml` (или перечислить роли вручную)
 4.  Запустить установку: `ansible-playbook playbook.yml`

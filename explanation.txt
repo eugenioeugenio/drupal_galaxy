@@ -29,7 +29,7 @@
 1.  Поднять виртуальную машину: `vagrant up` ( из папки demovm), она в  домашнем каталоге как и drupal_galaxy
 2.  Перейти в папку проекта: `cd drupal_galaxy`
 3.  Установить необходимые роли из Ansible Galaxy:
-   `ansible-galaxy install -r requirements.yml` (или перечислить роли вручную)
+   `ansible-galaxy install -r requirements.yml` (или перечислить роли вручную) - в данном проекте последнее.
 4.  Запустить установку: `ansible-playbook playbook.yml`
 5.  После завершения сайт доступен по адресу: `http://192.168.56.10`
 

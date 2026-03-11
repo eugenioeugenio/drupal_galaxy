@@ -1,0 +1,723 @@
+2026-03-11 13:04:02,877 p=45008 u=mumrikk n=ansible INFO| PLAY [all] *********************************************************************
+2026-03-11 13:04:02,930 p=45008 u=mumrikk n=ansible INFO| TASK [Gathering Facts] *********************************************************
+2026-03-11 13:04:12,968 p=45008 u=mumrikk n=ansible ERROR| [ERROR]: Task failed: Failed to connect to the host via ssh: ssh: connect to host 192.168.56.10 port 22: Connection timed out
+
+2026-03-11 13:04:12,968 p=45008 u=mumrikk n=ansible INFO| fatal: [192.168.56.10]: UNREACHABLE! => {"changed": false, "msg": "Task failed: Failed to connect to the host via ssh: ssh: connect to host 192.168.56.10 port 22: Connection timed out", "unreachable": true}
+2026-03-11 13:04:12,969 p=45008 u=mumrikk n=ansible INFO| PLAY RECAP *********************************************************************
+2026-03-11 13:04:12,969 p=45008 u=mumrikk n=ansible INFO| 192.168.56.10              : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2026-03-11 13:04:30,283 p=45016 u=mumrikk n=ansible INFO| PLAY [all] ********************************************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:04:30,331 p=45016 u=mumrikk n=ansible INFO| TASK [Gathering Facts] ********************************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:04:36,525 p=45016 u=mumrikk n=ansible WARNING| [WARNING]: Host '192.168.56.10' is using the discovered Python interpreter at '/usr/bin/python3.10', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.20/reference_appendices/interpreter_discovery.html for more information.
+
+2026-03-11 13:04:36,525 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:04:36,533 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Include OS-specific variables.] ********************************************************************************************************************************************************************************************************************
+2026-03-11 13:04:36,584 p=45016 u=mumrikk n=ansible WARNING| [WARNING]: Deprecation warnings can be disabled by setting `deprecation_warnings=False` in ansible.cfg.
+
+2026-03-11 13:04:36,585 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.apache/tasks/main.yml:4:17
+
+2 # Include variables and define needed variables.
+3 - name: Include OS-specific variables.
+4   include_vars: "{{ ansible_os_family }}.yml"
+                  ^ column 17
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:04:36,585 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:04:36,593 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Include variables for Amazon Linux.] ***************************************************************************************************************************************************************************************************************
+2026-03-11 13:04:36,606 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.apache/tasks/main.yml:9:7
+
+7   include_vars: "AmazonLinux.yml"
+8   when:
+9     - ansible_distribution == "Amazon"
+        ^ column 7
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:04:36,607 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:04:36,627 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Define apache_packages.] ***************************************************************************************************************************************************************************************************************************
+2026-03-11 13:04:36,750 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:04:36,756 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : include_tasks] *************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:04:36,807 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.apache/tasks/setup-Debian.yml for 192.168.56.10
+2026-03-11 13:04:36,821 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Update apt cache.] *********************************************************************************************************************************************************************************************************************************
+2026-03-11 13:05:51,708 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:05:51,724 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Ensure Apache is installed on Debian.] *************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:36,380 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:06:36,387 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Get installed version of Apache.] ******************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:38,329 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:06:38,336 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Create apache_version variable.] *******************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:38,364 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:06:38,371 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Include Apache 2.2 variables.] *********************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:38,410 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:06:38,417 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Include Apache 2.4 variables.] *********************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:38,449 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:06:38,456 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Configure Apache.] *********************************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:38,555 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.apache/tasks/configure-Debian.yml for 192.168.56.10
+2026-03-11 13:06:38,561 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Configure Apache.] *********************************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:39,620 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item={'regexp': '^Listen ', 'line': 'Listen 80'})
+2026-03-11 13:06:39,628 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Enable Apache mods.] *******************************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:41,370 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=rewrite)
+2026-03-11 13:06:42,674 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=ssl)
+2026-03-11 13:06:42,682 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Disable Apache mods.] ******************************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:42,713 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:06:42,721 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Enable Apache config.] *****************************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:42,739 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:06:42,746 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Disable Apache config.] ****************************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:42,780 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:06:42,787 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Check whether certificates defined in vhosts exist.] ***********************************************************************************************************************************************************************************************
+2026-03-11 13:06:42,815 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:06:42,827 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Add apache vhosts configuration.] ******************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:46,037 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:06:46,045 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Add vhost symlink in sites-enabled.] ***************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:47,682 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:06:47,699 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Remove default vhost in sites-enabled.] ************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:49,313 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:06:49,348 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Ensure Apache has selected state and enabled on boot.] *********************************************************************************************************************************************************************************************
+2026-03-11 13:06:52,441 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:06:52,461 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : ansible.builtin.include_tasks] **********************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:52,509 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.mysql/tasks/variables.yml for 192.168.56.10
+2026-03-11 13:06:52,527 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Include OS-specific variables.] *********************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:52,584 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=/home/mumrikk/.ansible/roles/geerlingguy.mysql/vars/Debian.yml)
+2026-03-11 13:06:52,592 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Define mysql_packages.] *****************************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:52,633 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:06:52,639 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Define mysql_daemon.] *******************************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:52,678 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:06:52,685 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Define mysql_slow_query_log_file.] ******************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:52,724 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:06:52,743 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Define mysql_log_error.] ****************************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:52,782 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:06:52,789 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Define mysql_syslog_tag.] ***************************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:52,841 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:06:52,867 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Define mysql_pid_file.] *****************************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:52,909 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:06:52,916 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Define mysql_config_file.] **************************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:52,955 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:06:52,962 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Define mysql_config_include_dir.] *******************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:53,006 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:06:53,013 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Define mysql_socket.] *******************************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:53,045 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:06:53,062 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Define mysql_supports_innodb_large_prefix.] *********************************************************************************************************************************************************************************************************
+2026-03-11 13:06:53,096 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:06:53,102 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : ansible.builtin.include_tasks] **********************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:53,116 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:06:53,124 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : ansible.builtin.include_tasks] **********************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:53,175 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.mysql/tasks/setup-Debian.yml for 192.168.56.10
+2026-03-11 13:06:53,180 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Check if MySQL is already installed.] ***************************************************************************************************************************************************************************************************************
+2026-03-11 13:06:54,588 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:06:54,595 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Update apt cache if MySQL is not yet installed.] ****************************************************************************************************************************************************************************************************
+2026-03-11 13:07:07,192 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:07:07,200 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Ensure MySQL Python libraries are installed.] *******************************************************************************************************************************************************************************************************
+2026-03-11 13:07:36,670 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:07:36,677 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Ensure MySQL packages are installed.] ***************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:16,409 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:09:16,427 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Ensure MySQL is stopped after initial install.] *****************************************************************************************************************************************************************************************************
+2026-03-11 13:09:17,944 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:09:17,951 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Delete innodb log files created by apt package after initial install.] ******************************************************************************************************************************************************************************
+2026-03-11 13:09:18,016 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10] => (item=ib_logfile0) 
+2026-03-11 13:09:18,016 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10] => (item=ib_logfile1) 
+2026-03-11 13:09:18,017 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:09:18,024 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : ansible.builtin.include_tasks] **********************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:18,039 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:09:18,056 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Check if MySQL packages were installed.] ************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:18,102 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:09:18,115 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : ansible.builtin.include_tasks] **********************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:18,182 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.mysql/tasks/configure.yml for 192.168.56.10
+2026-03-11 13:09:18,188 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Run mysql --version] ********************************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:19,465 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:09:19,473 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Extract MySQL version] ******************************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:19,517 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:09:19,531 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Copy my.cnf global MySQL configuration.] ************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:21,489 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:09:21,496 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Verify mysql include directory exists.] *************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:21,526 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:09:21,533 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Copy my.cnf override files into include directory.] *************************************************************************************************************************************************************************************************
+2026-03-11 13:09:21,571 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:09:21,579 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Create datadir if it does not exist] ****************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:22,762 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:09:22,769 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Ensure error log directory exists] ******************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:24,112 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:09:24,129 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Ensure slow query log file exists and has correct permissions] **************************************************************************************************************************************************************************************
+2026-03-11 13:09:24,158 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:09:24,165 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Ensure error log file exists and has correct permissions] *******************************************************************************************************************************************************************************************
+2026-03-11 13:09:24,206 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:09:24,217 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Ensure MySQL is started and enabled on boot.] *******************************************************************************************************************************************************************************************************
+2026-03-11 13:09:31,414 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:09:31,421 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : ansible.builtin.include_tasks] **********************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:31,474 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.mysql/tasks/secure-installation.yml for 192.168.56.10
+2026-03-11 13:09:31,489 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Ensure default user is present.] ********************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:31,521 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:09:31,528 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Copy user-my.cnf file with password credentials.] ***************************************************************************************************************************************************************************************************
+2026-03-11 13:09:31,559 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:09:31,566 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Disallow root login remotely] ***********************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:33,819 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1'))
+2026-03-11 13:09:33,828 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Get list of hosts for the root user.] ***************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:35,522 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:09:35,533 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Update MySQL root authentication via socket for localhost (Linux, MySQL ≥ 8.4)] *********************************************************************************************************************************************************************
+2026-03-11 13:09:37,597 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=localhost)
+2026-03-11 13:09:37,657 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Update MySQL root password for localhost root account (5.7.x ≤ MySQL < 8.4)] ************************************************************************************************************************************************************************
+2026-03-11 13:09:39,095 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=localhost)
+2026-03-11 13:09:39,103 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Update MySQL root password for localhost root account (< 5.7.x).] ***********************************************************************************************************************************************************************************
+2026-03-11 13:09:39,152 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10] => (item=localhost) 
+2026-03-11 13:09:39,153 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:09:39,160 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Copy .my.cnf file with root password credentials.] **************************************************************************************************************************************************************************************************
+2026-03-11 13:09:41,421 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:09:41,429 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Get list of hosts for the anonymous user.] **********************************************************************************************************************************************************************************************************
+2026-03-11 13:09:42,360 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:09:42,367 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Remove anonymous MySQL users.] **********************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:42,400 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:09:42,408 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Remove MySQL test database.] ************************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:44,525 p=45016 u=mumrikk n=ansible WARNING| [WARNING]: Support of mysqlcline/MySQLdb connector is deprecated. We'll stop testing against it in collection version 4.0.0 and remove the related code in 5.0.0. Use PyMySQL connector instead.
+
+2026-03-11 13:09:44,525 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: Importing 'to_native' from 'ansible.module_utils._text' is deprecated. This feature will be removed from ansible-core version 2.24. Use ansible.module_utils.common.text.converters instead.
+
+2026-03-11 13:09:44,525 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:09:44,532 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : ansible.builtin.include_tasks] **********************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:44,567 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.mysql/tasks/databases.yml for 192.168.56.10
+2026-03-11 13:09:44,573 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Ensure MySQL databases are present.] ****************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:46,585 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item={'name': 'drupal'})
+2026-03-11 13:09:46,594 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : ansible.builtin.include_tasks] **********************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:46,638 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.mysql/tasks/users.yml for 192.168.56.10
+2026-03-11 13:09:46,644 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Ensure MySQL users are present.] ********************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:48,240 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item={'name': 'drupal', 'host': '%', 'password': 'drupal', 'priv': 'drupal.*:ALL'})
+2026-03-11 13:09:48,249 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : ansible.builtin.include_tasks] **********************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:48,290 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.mysql/tasks/replication.yml for 192.168.56.10
+2026-03-11 13:09:48,295 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Ensure replication user exists on master.] **********************************************************************************************************************************************************************************************************
+2026-03-11 13:09:48,326 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:09:48,333 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Check slave replication status.] ********************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:48,359 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:09:48,366 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Check master replication status.] *******************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:48,414 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:09:48,421 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Configure replication on the slave.] ****************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:48,452 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:09:48,471 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.mysql : Start replication.] *********************************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:48,502 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:09:48,514 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-versions : Include OS-specific variables.] **************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:48,564 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.php-versions/tasks/main.yml:5:7
+
+3   include_vars: "{{ item }}"
+4   with_fileglob:
+5     - "{{ role_path }}/vars/{{ ansible_os_family }}.yml"
+        ^ column 7
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:09:48,582 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=/home/mumrikk/.ansible/roles/geerlingguy.php-versions/vars/Debian.yml)
+2026-03-11 13:09:48,591 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-versions : Remove missing JSON extension for PHP 8.0 (included by default)] *****************************************************************************************************************************************************************************
+2026-03-11 13:09:48,677 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:09:48,684 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-versions : Define PHP variables.] ***********************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:48,761 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: The internal "vars" dictionary is deprecated. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.php-versions/tasks/main.yml:18:7
+
+16   set_fact: "{{ item.key }}={{ lookup('vars', item.value) }}"
+17   when:
+18     - vars[item.key] is undefined
+         ^ column 7
+
+Use the `vars` and `varnames` lookups instead.
+
+
+2026-03-11 13:09:48,762 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: The internal "vars" dictionary is deprecated. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.php-versions/tasks/main.yml:19:7
+
+17   when:
+18     - vars[item.key] is undefined
+19     - vars[item.value] is defined
+         ^ column 7
+
+Use the `vars` and `varnames` lookups instead.
+
+
+2026-03-11 13:09:48,762 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item={'key': 'php_conf_paths', 'value': '__php_conf_paths'})
+2026-03-11 13:09:48,782 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item={'key': 'php_extension_conf_paths', 'value': '__php_extension_conf_paths'})
+2026-03-11 13:09:48,805 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item={'key': 'php_fpm_daemon', 'value': '__php_fpm_daemon'})
+2026-03-11 13:09:48,827 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item={'key': 'php_fpm_conf_path', 'value': '__php_fpm_conf_path'})
+2026-03-11 13:09:48,849 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item={'key': 'php_fpm_pool_conf_path', 'value': '__php_fpm_pool_conf_path'})
+2026-03-11 13:09:48,869 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item={'key': 'php_mysql_package', 'value': '__php_mysql_package'})
+2026-03-11 13:09:48,891 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item={'key': 'php_redis_package', 'value': '__php_redis_package'})
+2026-03-11 13:09:48,914 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item={'key': 'php_memcached_package', 'value': '__php_memcached_package'})
+2026-03-11 13:09:48,947 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item={'key': 'php_pgsql_package', 'value': '__php_pgsql_package'})
+2026-03-11 13:09:48,969 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item={'key': 'php_tideways_module_path', 'value': '__php_tideways_module_path'})
+2026-03-11 13:09:48,980 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item={'key': 'php_uploadprogress_module_path', 'value': '__php_uploadprogress_module_path'})
+2026-03-11 13:09:49,002 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item={'key': 'php_xdebug_module_path', 'value': '__php_xdebug_module_path'})
+2026-03-11 13:09:49,025 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item={'key': 'php_xhprof_module_path', 'value': '__php_xhprof_module_path'})
+2026-03-11 13:09:49,045 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item={'key': 'php_packages', 'value': '__php_packages'})
+2026-03-11 13:09:49,070 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-versions : Define php_install_recommends variable.] *****************************************************************************************************************************************************************************************************
+2026-03-11 13:09:49,100 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:09:49,108 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-versions : include_tasks] *******************************************************************************************************************************************************************************************************************************
+2026-03-11 13:09:49,145 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.php-versions/tasks/setup-Debian.yml for 192.168.56.10
+2026-03-11 13:09:49,161 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-versions : Set the correct opcache filename (Ubuntu/Debian).] *******************************************************************************************************************************************************************************************
+2026-03-11 13:09:49,188 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:09:49,197 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-versions : Add dependencies for PHP versions.] **********************************************************************************************************************************************************************************************************
+2026-03-11 13:10:13,806 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:10:13,815 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-versions : Make API request to Launchpad] ***************************************************************************************************************************************************************************************************************
+2026-03-11 13:10:16,880 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:10:16,887 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-versions : Parse JSON to extract signing key fingerprint] ***********************************************************************************************************************************************************************************************
+2026-03-11 13:10:16,917 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:10:16,924 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-versions : Retrieve ASCII representation of the key using the signing key fingerprint] ******************************************************************************************************************************************************************
+2026-03-11 13:10:18,466 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:10:18,473 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-versions : Set data for Ondrej's repo (Ubuntu).] ********************************************************************************************************************************************************************************************************
+2026-03-11 13:10:18,523 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.php-versions/tasks/setup-Debian.yml:43:9
+
+41     # See: https://github.com/geerlingguy/ansible-role-php-versions/issues/94
+42     ondrej_repo_signed_by: "{{ keyserver_response.content | regex_replace('\nComment.+\n','\n') }}"
+43   when: ansible_distribution == "Ubuntu"
+           ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:10:18,523 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:10:18,542 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-versions : debug] ***************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:10:18,585 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => {
+    "ondrej_repo_signed_by": "-----BEGIN PGP PUBLIC KEY BLOCK-----\nVersion: Hockeypuck 2.2\n\nxsFNBGYo0vEBEAC0Semxy5I2b8exRUxJfTKkHR4f5uyS0dTd9vYgMI5T3gsa7ypH\nHtE+GiZC+T9m/F9h66+XJMxhuNsKRs7T2In5NSeso9H/ytlSTayUaBtCFfRp6y6b\n6ozuRBfqYJGxhjAnIzvNF/Wpp2BvfQm3OrQ7uJJrt5IvzLDC4jPxl/Xs3sTT+Hbk\nbkKKprZ3xmy2enuwBaNWR/CUtAz3hbkzL1kGbhX9m3QidFJagVVdDw3aNEwo8ush\ndjWfF+BajNvpDFYJKBGQbCeagB753Baa5yIN62x+THLnLiKTMDS1e7U0ZDiV9671\nnoTbtN5TeZeyfsEmeZ8X60x11JIP3yYHYZT70/DyTYX3WC9yQFyIgVOfRlGklMKI\nk3TLMmtq8w5Hz1vovwzV7PzaQnmY+uNP2ZbAP4fJ3iFAj0L+u0i1nOFgTy0Lq058\nO/FjRrQxuceDDCF+9ThspXMw3Puvz8giuBDCdEda84uC7XWMdqgz/maLfFQjAmyP\nIxi1EMxMlHYyZajpR1cdCfrAIQlnQjHSWmyeCFgXPPfRA71aCcJ7oSrDjogW6Ahd\nHRkQRKf1FF9BFzycgSQotfR+7CKfPQh1kghufM9W/spARzA709nGZjXJzgEJLQd3\nCDB6dIIxT/0YI36h3Qgfmiiw4twO24MMEqEEPIELz2WJKeWGkdQdcekpxQARAQAB\nzR9MYXVuY2hwYWQgUFBBIGZvciBPbmTFmWVqIFN1csO9wsGOBBMBCgA4FiEEuNx+\nU5RmVu+85MHdcdrqq0rUyrYFAmYo0vECGwMFCwkIBwIGFQoJCAsCBBYCAwECHgEC\nF4AACgkQcdrqq0rUyrYOPQ/+IArA4s1J3op/w7cXek0ieFHWHFDrxPYS+78/LF/J\nLoYZw0nIU5Ovr+LzehFMIQU6esgPXwbeCVgwLwat57augAkAYWT0UzH5dE6RKAGr\nC2vsHWVfPhQn6UndfzwXc0mTLGQni25aQaZ6k60Dbm/vblejrTQrtAUWoMO3Z1cr\nNDGJ3Z9DCxtr2o9gRYUI6HwLHJtobTIeI5xsr5x+GvXiIAVCPa3ZEuRL6jMQfqfS\nC43mpuiS1kGgsnQLs2DbN7EFCfiJoNX1QzZu25zg+IS9PXbCJnheZWnH0rwUSb/N\nhZPcSefGlNlhr824OfT30v79hQnw59XbsfV270O9jPbD4kttN+OiszbU66zsuiOh\nBO46XCckQPqDkBMw56GPFuVrQgGb1thXvn67URJgPyJhwauBWKPNAJ9Ojuo+yVq/\nhdR1VNWThXQbZgaGSWrbjt6FdYtQb9VX88uu5gFDmr180HogHNUDUcqNLLdnjfFs\n4DyJlusQ5I/a7cQ7nlkNgxAmHszwO/mGLBuGljDUYkwZDW9nqP1Q5Q2jMtrhgXvR\n2SOtufvecUbB7+eoRSaOnu7CNMATG6LocFEMzhKUde1uZTfWSqnYEcdqoFJMi46y\nqaNxhiNLsQ5OBMbgSp2zCbQxRBdITMVvBR5YjCetUIGEs6T1yQ5wh5Xpoi34ShHn\nv38=\n=+F9r\n-----END PGP PUBLIC KEY BLOCK-----\n"
+}
+2026-03-11 13:10:18,593 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-versions : Set data for Ondrej's repo (Debian).] ********************************************************************************************************************************************************************************************************
+2026-03-11 13:10:18,625 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.php-versions/tasks/setup-Debian.yml:51:9
+
+49     ondrej_repo_uri: "https://packages.sury.org/php"
+50     ondrej_repo_signed_by: "https://packages.sury.org/php/apt.gpg"
+51   when: ansible_distribution == "Debian"
+           ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:10:18,625 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:10:18,632 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-versions : Add Ondrej's PHP repo.] **********************************************************************************************************************************************************************************************************************
+2026-03-11 13:10:21,151 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:10:21,159 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-versions : Update apt caches after repo is added.] ******************************************************************************************************************************************************************************************************
+2026-03-11 13:10:54,874 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.php-versions/tasks/setup-Debian.yml:69:7
+
+67   when:
+68     - php_ondrej_debian_repo.changed
+69     - ansible_os_family == "Debian"
+         ^ column 7
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:10:54,874 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:10:54,890 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-versions : Purge PHP version packages (besides the currently chosen php_version).] **********************************************************************************************************************************************************************
+2026-03-11 13:10:59,490 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:10:59,498 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-versions : Also purge php-common package if any versions were just purged.] *****************************************************************************************************************************************************************************
+2026-03-11 13:10:59,545 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:10:59,567 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Include OS-specific variables.] ***********************************************************************************************************************************************************************************************************************
+2026-03-11 13:10:59,612 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.php/tasks/main.yml:4:17
+
+2 # Variable setup.
+3 - name: Include OS-specific variables.
+4   include_vars: "{{ ansible_os_family }}.yml"
+                  ^ column 17
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:10:59,612 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:10:59,619 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Include distribution and version-specific vars.] ******************************************************************************************************************************************************************************************************
+2026-03-11 13:10:59,661 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.php/tasks/main.yml:10:11
+
+ 8   with_first_found:
+ 9     - files:
+10         - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:10:59,683 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=/home/mumrikk/.ansible/roles/geerlingguy.php/vars/Ubuntu-22.yml)
+2026-03-11 13:10:59,691 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Set the default PHP version for Debian-based OSes.] ***************************************************************************************************************************************************************************************************
+2026-03-11 13:10:59,727 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.php/tasks/main.yml:16:9
+
+14   set_fact:
+15     php_default_version_debian: "{{ __php_default_version_debian }}"
+16   when: php_default_version_debian is not defined and ansible_os_family == 'Debian'
+           ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:10:59,728 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:10:59,741 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Define the name of the JSON extension package on Debian for PHP <8.] **********************************************************************************************************************************************************************************
+2026-03-11 13:10:59,786 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.php/tasks/main.yml:21:9
+
+19   set_fact:
+20     __php_json_package_debian: "{{ 'php' + php_default_version_debian + '-json' }}"
+21   when: ansible_os_family == 'Debian' and php_default_version_debian is version('8.0', '<')
+           ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:10:59,786 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:10:59,804 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Add the JSON extension on Debian for PHP <8.] *********************************************************************************************************************************************************************************************************
+2026-03-11 13:10:59,834 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:10:59,842 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Define php_packages.] *********************************************************************************************************************************************************************************************************************************
+2026-03-11 13:10:59,870 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:10:59,887 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Define php_webserver_daemon.] *************************************************************************************************************************************************************************************************************************
+2026-03-11 13:10:59,937 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:10:59,948 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Define php_conf_paths.] *******************************************************************************************************************************************************************************************************************************
+2026-03-11 13:10:59,977 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:10:59,984 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Define php_extension_conf_paths.] *********************************************************************************************************************************************************************************************************************
+2026-03-11 13:11:00,024 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:11:00,043 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Define php_apc_conf_filename.] ************************************************************************************************************************************************************************************************************************
+2026-03-11 13:11:00,079 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:11:00,097 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Define php_opcache_conf_filename (Ubuntu 16.04).] *****************************************************************************************************************************************************************************************************
+2026-03-11 13:11:00,127 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.php/tasks/main.yml:56:9
+
+54   set_fact:
+55     php_opcache_conf_filename: "10-opcache.ini"
+56   when: php_opcache_conf_filename is not defined and ansible_distribution_version == "16.04"
+           ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:11:00,127 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:11:00,145 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Define php_opcache_conf_filename.] ********************************************************************************************************************************************************************************************************************
+2026-03-11 13:11:00,173 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:11:00,180 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Define php_fpm_conf_path.] ****************************************************************************************************************************************************************************************************************************
+2026-03-11 13:11:00,221 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:11:00,229 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : include_tasks] ****************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:11:00,266 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.php/tasks/main.yml:72:7
+
+70   when:
+71     - not php_install_from_source
+72     - ansible_os_family == 'RedHat'
+         ^ column 7
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:11:00,266 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:11:00,273 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : include_tasks] ****************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:11:00,391 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.php/tasks/setup-Debian.yml for 192.168.56.10
+2026-03-11 13:11:00,399 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Update apt cache.] ************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:11:05,365 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:11:05,372 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Ensure PHP packages are installed.] *******************************************************************************************************************************************************************************************************************
+2026-03-11 13:14:21,213 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:14:21,220 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Delete APCu configuration file if this role will provide one.] ****************************************************************************************************************************************************************************************
+2026-03-11 13:14:22,715 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=/etc/php/8.3/fpm/conf.d)
+2026-03-11 13:14:24,314 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=/etc/php/8.3/apache2/conf.d)
+2026-03-11 13:14:25,724 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=/etc/php/8.3/cli/conf.d)
+2026-03-11 13:14:25,733 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Delete OpCache configuration file if this role will provide one.] *************************************************************************************************************************************************************************************
+2026-03-11 13:14:27,607 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=/etc/php/8.3/fpm/conf.d)
+2026-03-11 13:14:29,133 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=/etc/php/8.3/apache2/conf.d)
+2026-03-11 13:14:30,855 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=/etc/php/8.3/cli/conf.d)
+2026-03-11 13:14:30,865 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : include_tasks] ****************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:14:30,889 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:14:30,896 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : include_tasks] ****************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:14:30,940 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.php/tasks/configure.yml for 192.168.56.10
+2026-03-11 13:14:30,954 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Ensure configuration directories exist.] **************************************************************************************************************************************************************************************************************
+2026-03-11 13:14:32,441 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=/etc/php/8.3/fpm)
+2026-03-11 13:14:33,932 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=/etc/php/8.3/apache2)
+2026-03-11 13:14:35,726 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=/etc/php/8.3/cli)
+2026-03-11 13:14:37,497 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=/etc/php/8.3/fpm/conf.d)
+2026-03-11 13:14:39,097 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=/etc/php/8.3/apache2/conf.d)
+2026-03-11 13:14:40,965 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=/etc/php/8.3/cli/conf.d)
+2026-03-11 13:14:40,985 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Place PHP configuration file in place.] ***************************************************************************************************************************************************************************************************************
+2026-03-11 13:14:44,373 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=/etc/php/8.3/fpm)
+2026-03-11 13:14:46,759 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=/etc/php/8.3/apache2)
+2026-03-11 13:14:50,174 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=/etc/php/8.3/cli)
+2026-03-11 13:14:50,184 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : include_tasks] ****************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:14:50,221 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.php/tasks/configure-apcu.yml for 192.168.56.10
+2026-03-11 13:14:50,229 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Check for existing APCu config files.] ****************************************************************************************************************************************************************************************************************
+2026-03-11 13:14:52,102 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=/etc/php/8.3/fpm/conf.d)
+2026-03-11 13:14:53,612 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=/etc/php/8.3/apache2/conf.d)
+2026-03-11 13:14:55,384 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=/etc/php/8.3/cli/conf.d)
+2026-03-11 13:14:55,393 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Remove any non-role-supplied APCu config files.] ******************************************************************************************************************************************************************************************************
+2026-03-11 13:14:55,419 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:14:55,427 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Ensure APCu config file is present.] ******************************************************************************************************************************************************************************************************************
+2026-03-11 13:14:58,461 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=/etc/php/8.3/fpm/conf.d)
+2026-03-11 13:15:01,773 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=/etc/php/8.3/apache2/conf.d)
+2026-03-11 13:15:05,042 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=/etc/php/8.3/cli/conf.d)
+2026-03-11 13:15:05,050 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Remove APCu config file if APC is disabled.] **********************************************************************************************************************************************************************************************************
+2026-03-11 13:15:05,087 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10] => (item=/etc/php/8.3/fpm/conf.d) 
+2026-03-11 13:15:05,088 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10] => (item=/etc/php/8.3/apache2/conf.d) 
+2026-03-11 13:15:05,091 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10] => (item=/etc/php/8.3/cli/conf.d) 
+2026-03-11 13:15:05,093 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:15:05,102 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : include_tasks] ****************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:15:05,146 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.php/tasks/configure-opcache.yml for 192.168.56.10
+2026-03-11 13:15:05,156 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Check for existing OpCache config files.] *************************************************************************************************************************************************************************************************************
+2026-03-11 13:15:06,993 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=/etc/php/8.3/fpm/conf.d)
+2026-03-11 13:15:08,627 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=/etc/php/8.3/apache2/conf.d)
+2026-03-11 13:15:10,197 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=/etc/php/8.3/cli/conf.d)
+2026-03-11 13:15:10,206 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Remove any non-role-supplied OpCache config files.] ***************************************************************************************************************************************************************************************************
+2026-03-11 13:15:10,226 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:15:10,235 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Ensure OpCache config file is present.] ***************************************************************************************************************************************************************************************************************
+2026-03-11 13:15:13,246 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=/etc/php/8.3/fpm/conf.d)
+2026-03-11 13:15:15,971 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=/etc/php/8.3/apache2/conf.d)
+2026-03-11 13:15:18,448 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=/etc/php/8.3/cli/conf.d)
+2026-03-11 13:15:18,457 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Remove OpCache config file if OpCache is disabled.] ***************************************************************************************************************************************************************************************************
+2026-03-11 13:15:18,503 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10] => (item=/etc/php/8.3/fpm/conf.d) 
+2026-03-11 13:15:18,505 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10] => (item=/etc/php/8.3/apache2/conf.d) 
+2026-03-11 13:15:18,508 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10] => (item=/etc/php/8.3/cli/conf.d) 
+2026-03-11 13:15:18,508 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:15:18,517 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : include_tasks] ****************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:15:18,556 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.php/tasks/configure-fpm.yml for 192.168.56.10
+2026-03-11 13:15:18,573 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Define php_fpm_daemon.] *******************************************************************************************************************************************************************************************************************************
+2026-03-11 13:15:18,600 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:15:18,607 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Define php_fpm_pool_conf_path.] ***********************************************************************************************************************************************************************************************************************
+2026-03-11 13:15:18,638 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:15:18,657 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Define php_fpm_pool_user.] ****************************************************************************************************************************************************************************************************************************
+2026-03-11 13:15:18,701 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:15:18,718 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Define php_fpm_pool_group.] ***************************************************************************************************************************************************************************************************************************
+2026-03-11 13:15:18,754 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:15:18,773 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Stat php_fpm_pool_conf_path] **************************************************************************************************************************************************************************************************************************
+2026-03-11 13:15:20,461 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:15:20,469 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Ensure the default pool directory exists.] ************************************************************************************************************************************************************************************************************
+2026-03-11 13:15:20,499 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:15:20,507 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Create fpm pools.] ************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:15:23,769 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item={'pool_name': 'www', 'pool_template': 'www.conf.j2', 'pool_listen': '127.0.0.1:9000', 'pool_listen_allowed_clients': '127.0.0.1', 'pool_pm': 'dynamic', 'pool_pm_max_children': 50, 'pool_pm_start_servers': 5, 'pool_pm_min_spare_servers': 5, 'pool_pm_max_spare_servers': 5, 'pool_pm_max_requests': 0, 'pool_pm_status_path': ''})
+2026-03-11 13:15:23,788 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php : Ensure php-fpm is started and enabled at boot (if configured).] ***************************************************************************************************************************************************************************************
+2026-03-11 13:15:26,271 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.php/tasks/configure-fpm.yml:55:7
+
+53   when:
+54     - php_enable_php_fpm
+55     - ansible_distribution != "Debian"
+         ^ column 7
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:15:26,271 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:15:26,294 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-mysql : Include OS-specific variables.] *****************************************************************************************************************************************************************************************************************
+2026-03-11 13:15:26,343 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.php-mysql/tasks/main.yml:4:17
+
+2 # Variable setup.
+3 - name: Include OS-specific variables.
+4   include_vars: "{{ ansible_os_family }}.yml"
+                  ^ column 17
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:15:26,343 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:15:26,350 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-mysql : Define php_mysql_package.] **********************************************************************************************************************************************************************************************************************
+2026-03-11 13:15:26,378 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:15:26,398 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-mysql : Install PHP MySQL dependencies (RedHat).] *******************************************************************************************************************************************************************************************************
+2026-03-11 13:15:26,428 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.php-mysql/tasks/main.yml:20:9
+
+18     - restart webserver
+19     - restart php-fpm
+20   when: ansible_os_family == 'RedHat'
+           ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:15:26,429 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:15:26,449 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.php-mysql : Install PHP MySQL dependencies (Debian).] *******************************************************************************************************************************************************************************************************
+2026-03-11 13:15:59,630 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.php-mysql/tasks/main.yml:29:9
+
+27     - restart webserver
+28     - restart php-fpm
+29   when: ansible_os_family == 'Debian'
+           ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:15:59,630 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:15:59,652 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Include OS-specific variables.] ********************************************************************************************************************************************************************************************************************
+2026-03-11 13:15:59,688 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:15:59,695 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Include variables for Amazon Linux.] ***************************************************************************************************************************************************************************************************************
+2026-03-11 13:15:59,711 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:15:59,729 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Define apache_packages.] ***************************************************************************************************************************************************************************************************************************
+2026-03-11 13:15:59,764 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:15:59,773 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : include_tasks] *************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:15:59,815 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.apache/tasks/setup-Debian.yml for 192.168.56.10
+2026-03-11 13:15:59,831 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Update apt cache.] *********************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:04,270 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:04,279 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Ensure Apache is installed on Debian.] *************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:10,965 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:10,975 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Get installed version of Apache.] ******************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:12,561 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:12,568 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Create apache_version variable.] *******************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:12,598 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:12,605 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Include Apache 2.2 variables.] *********************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:12,630 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:12,638 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Include Apache 2.4 variables.] *********************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:12,680 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:12,688 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Configure Apache.] *********************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:12,803 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.apache/tasks/configure-Debian.yml for 192.168.56.10
+2026-03-11 13:16:12,809 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Configure Apache.] *********************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:14,446 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item={'regexp': '^Listen ', 'line': 'Listen 80'})
+2026-03-11 13:16:14,455 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Enable Apache mods.] *******************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:16,186 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=rewrite)
+2026-03-11 13:16:17,906 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10] => (item=ssl)
+2026-03-11 13:16:17,915 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Disable Apache mods.] ******************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:17,941 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:17,948 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Enable Apache config.] *****************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:17,987 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:17,996 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Disable Apache config.] ****************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:18,041 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:18,048 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Check whether certificates defined in vhosts exist.] ***********************************************************************************************************************************************************************************************
+2026-03-11 13:16:18,075 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:18,082 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Add apache vhosts configuration.] ******************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:20,924 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:20,931 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Add vhost symlink in sites-enabled.] ***************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:22,527 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:22,535 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Remove default vhost in sites-enabled.] ************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:24,053 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:24,062 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache : Ensure Apache has selected state and enabled on boot.] *********************************************************************************************************************************************************************************************
+2026-03-11 13:16:26,551 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:26,564 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.apache-php-fpm : Enable mod_proxy_fcgi.] ********************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:28,049 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.apache-php-fpm/tasks/main.yml:12:9
+
+10     - proxy_fcgi.load
+11   notify: restart apache
+12   when: ansible_os_family == 'Debian'
+           ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:16:28,049 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=proxy.load)
+2026-03-11 13:16:29,803 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=proxy_fcgi.load)
+2026-03-11 13:16:29,828 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.composer : Check if requested version parameters are valid] *************************************************************************************************************************************************************************************************
+2026-03-11 13:16:29,842 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:29,849 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.composer : Set php_executable variable to a default if not defined.] ****************************************************************************************************************************************************************************************
+2026-03-11 13:16:29,881 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:29,900 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.composer : Check if Composer is installed.] *****************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:31,489 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:31,497 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.composer : Get Composer installer signature.] ***************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:33,595 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:33,602 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.composer : Download Composer installer.] ********************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:35,599 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:16:35,607 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.composer : Run Composer installer.] *************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:40,636 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:16:40,643 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.composer : Move Composer into globally-accessible location.] ************************************************************************************************************************************************************************************************
+2026-03-11 13:16:42,438 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:16:42,447 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.composer : Update Composer to latest version (if configured).] **********************************************************************************************************************************************************************************************
+2026-03-11 13:16:42,484 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:42,491 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.composer : Ensure composer directory exists.] ***************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:44,316 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:16:44,323 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.composer : Add GitHub OAuth token for Composer (if configured).] ********************************************************************************************************************************************************************************************
+2026-03-11 13:16:44,356 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:44,366 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.composer : include_tasks] ***********************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:44,402 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:44,409 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.composer : include_tasks] ***********************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:44,449 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:44,474 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drush : include_tasks] **************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:44,521 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.drush/tasks/install-drush-launcher.yml for 192.168.56.10
+2026-03-11 13:16:44,528 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drush : Check current state.] *******************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:46,446 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:46,464 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drush : Perform cleanup of old symlink.] ********************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:46,493 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:46,506 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drush : Ensure Drush path directory exists.] ****************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:48,290 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:48,297 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drush : Install Drush.] *************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:51,751 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:16:51,759 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drush : Ensure Drush is executable.] ************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:53,434 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:16:53,442 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drush : include_tasks] **************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:53,458 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:53,478 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drush : include_tasks] **************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:53,493 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:53,528 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : Add backwards-compatibility shims.] ****************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:53,573 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.drupal/tasks/backwards-compatibility.yml for 192.168.56.10
+2026-03-11 13:16:53,602 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : build_makefile shim] *******************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:53,633 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:53,641 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : build_composer shim] *******************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:53,681 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:53,688 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : build_composer_project shim] ***********************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:53,750 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:53,757 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : install_site shim] *********************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:53,817 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:53,824 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : drupalvm_database shim] ****************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:53,855 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:53,879 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : Check if Drupal is already set up.] ****************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:55,503 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:55,512 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : Define drush_path if it's not already defined.] ****************************************************************************************************************************************************************************************************
+2026-03-11 13:16:55,544 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:55,556 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : Define drupal_site_exists.] ************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:55,600 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:55,611 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : include_tasks] *************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:55,640 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:55,652 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : Define drupal_deploy_updated] **********************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:55,706 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:55,714 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : include_tasks] *************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:55,748 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:55,757 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : include_tasks] *************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:55,780 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:55,788 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : include_tasks] *************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:55,820 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:16:55,827 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : include_tasks] *************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:55,954 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.drupal/tasks/build-composer-project.yml for 192.168.56.10
+2026-03-11 13:16:55,964 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : Delete old /tmp/composer-project] ******************************************************************************************************************************************************************************************************************
+2026-03-11 13:16:57,888 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:16:57,896 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : Generate Drupal project with composer package in /tmp/composer-project (this may take a while).] ***************************************************************************************************************************************************
+2026-03-11 13:18:22,065 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:18:22,077 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : Ensure drupal_composer_install_dir directory has proper permissions.] ******************************************************************************************************************************************************************************
+2026-03-11 13:18:23,509 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.drupal/defaults/main.yml:39:20
+
+37 # Required Drupal settings.
+38 drupal_core_path: "{{ drupal_deploy_dir }}/web"
+39 drupal_core_owner: "{{ ansible_ssh_user | default(ansible_env.SUDO_USER, true) | default(ansible_env.USER, true) |...
+                      ^ column 20
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2026-03-11 13:18:23,510 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:18:23,518 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : Move Drupal project files to drupal_composer_install_dir (this may take a while).] *****************************************************************************************************************************************************************
+2026-03-11 13:18:31,181 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:18:31,195 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : Install dependencies with composer require (this may take a while).] *******************************************************************************************************************************************************************************
+2026-03-11 13:19:16,940 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10] => (item=drush/drush:^13)
+2026-03-11 13:19:16,948 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : Check if a project specific Drush binary exists.] **************************************************************************************************************************************************************************************************
+2026-03-11 13:19:18,535 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:19:18,544 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : Use project specific Drush if available.] **********************************************************************************************************************************************************************************************************
+2026-03-11 13:19:18,576 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:19:18,583 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : include_tasks] *************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:19:18,630 p=45016 u=mumrikk n=ansible INFO| included: /home/mumrikk/.ansible/roles/geerlingguy.drupal/tasks/install-site.yml for 192.168.56.10
+2026-03-11 13:19:18,644 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : Check if site is already installed.] ***************************************************************************************************************************************************************************************************************
+2026-03-11 13:19:21,482 p=45016 u=mumrikk n=ansible INFO| ok: [192.168.56.10]
+2026-03-11 13:19:21,491 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : Configure database correctly if using PostgreSQL.] *************************************************************************************************************************************************************************************************
+2026-03-11 13:19:21,516 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:19:21,524 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : Install Drupal with drush.] ************************************************************************************************************************************************************************************************************************
+2026-03-11 13:20:03,998 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:20:04,008 p=45016 u=mumrikk n=ansible INFO| TASK [geerlingguy.drupal : Install configured modules with drush.] ************************************************************************************************************************************************************************************************************
+2026-03-11 13:20:04,137 p=45016 u=mumrikk n=ansible INFO| [DEPRECATION WARNING]: Conditional result (False) was derived from value of type 'list' at '/home/mumrikk/.ansible/roles/geerlingguy.drupal/defaults/main.yml:56:24'. Conditionals must have a boolean result. This feature will be removed from ansible-core version 2.23.
+Origin: /home/mumrikk/.ansible/roles/geerlingguy.drupal/tasks/install-site.yml:42:9
+
+40   args:
+41     chdir: "{{ drupal_core_path }}"
+42   when: ('Drupal bootstrap' not in drupal_site_installed.stdout) and drupal_enable_modules
+           ^ column 9
+
+Broken conditionals are currently allowed because the `ALLOW_BROKEN_CONDITIONALS` configuration option is enabled.
+
+
+2026-03-11 13:20:04,137 p=45016 u=mumrikk n=ansible INFO| skipping: [192.168.56.10]
+2026-03-11 13:20:04,165 p=45016 u=mumrikk n=ansible INFO| RUNNING HANDLER [geerlingguy.mysql : restart mysql] ***************************************************************************************************************************************************************************************************************************
+2026-03-11 13:20:15,098 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:20:15,105 p=45016 u=mumrikk n=ansible INFO| RUNNING HANDLER [geerlingguy.php : restart webserver] *************************************************************************************************************************************************************************************************************************
+2026-03-11 13:20:17,955 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:20:17,962 p=45016 u=mumrikk n=ansible INFO| RUNNING HANDLER [geerlingguy.php : restart php-fpm] ***************************************************************************************************************************************************************************************************************************
+2026-03-11 13:20:21,453 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:20:21,461 p=45016 u=mumrikk n=ansible INFO| RUNNING HANDLER [geerlingguy.apache : restart apache] *************************************************************************************************************************************************************************************************************************
+2026-03-11 13:20:24,232 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:20:24,246 p=45016 u=mumrikk n=ansible INFO| RUNNING HANDLER [geerlingguy.drupal : clear opcache] **************************************************************************************************************************************************************************************************************************
+2026-03-11 13:20:30,701 p=45016 u=mumrikk n=ansible INFO| changed: [192.168.56.10]
+2026-03-11 13:20:30,702 p=45016 u=mumrikk n=ansible INFO| PLAY RECAP ********************************************************************************************************************************************************************************************************************************************************************
+2026-03-11 13:20:30,702 p=45016 u=mumrikk n=ansible INFO| 192.168.56.10              : ok=146  changed=46   unreachable=0    failed=0    skipped=68   rescued=0    ignored=0   
